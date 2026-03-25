@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Playfair Display", serif;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  --color-bg: #080808;
+  --color-fg: #ffffff;
+  --color-accent: #00ff99; /* Cyber Lime */
+  --color-muted: #141414;
+  --color-border: rgba(0, 255, 153, 0.1);
+}
+
+@layer base {
+  body {
+    @apply bg-bg text-fg font-sans antialiased selection:bg-accent selection:text-bg overflow-x-hidden;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+/* Custom Utilities */
+.text-display {
+  @apply font-display italic tracking-tighter;
+}
+
+.text-huge {
+  font-size: clamp(4rem, 18vw, 14rem);
+  line-height: 0.8;
+}
+
+.grid-dot {
+  background-image: radial-gradient(circle at 1px 1px, rgba(0, 255, 153, 0.07) 1px, transparent 0);
+  background-size: 50px 50px;
+}
+
+.mouse-glow {
+  background: radial-gradient(600px circle at var(--x) var(--y), rgba(0, 255, 153, 0.08), transparent 40%);
+}
+
+.hover-card {
+  @apply transition-all duration-500 ease-out border border-border bg-muted/50 backdrop-blur-sm;
+}
+
+.hover-card:hover {
+  @apply border-accent/40 bg-muted/80 -translate-y-2 shadow-[0_0_30px_rgba(0,255,153,0.1)];
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-bg;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-muted hover:bg-accent transition-colors;
+}
