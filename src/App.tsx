@@ -18,6 +18,12 @@ import { RESUME_DATA } from "./constants";
 import { useState, useRef, useEffect } from "react";
 
 export default function App() {
+  console.log("App component rendering...");
+  
+  if (!RESUME_DATA) {
+    return <div className="text-accent p-10 font-mono">Error: Resume data not found.</div>;
+  }
+
   const [expandedExp, setExpandedExp] = useState<number | null>(0);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
